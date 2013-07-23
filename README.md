@@ -25,4 +25,4 @@ To compile a project that uses Elm Socket you must include the socket.io.js file
 
  * elm --import-js="/path/to/out/SocketIO.js" --import-js="/path/to/node_modules/socket.io-client/dist/socket.io.js" myFile.elm
 
-Chekc out more samples in the samples/ directory. Chat shows how to build an application that passes chat messagees. It requires the node.js app to forward the messages though.
+Check out more samples in the samples/ directory. Chat shows how to build an application that passes chat messages. It requires the node.js app to forward the messages though.

@@ -1,0 +1,17 @@
+{
+  "name": "ElmSockets-Demo",
+  "version": "0.0.0",
+  "description": "Small socket.io application to test the ElmSockets package.",
+  "main": "app.js",
+  "dependencies": {
+    "socket.io": "~0.9.14",
+    "socket.io-client": "~0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Ernesto Rodriguez",
+  "license": "BSD"
+}

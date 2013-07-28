@@ -7,23 +7,11 @@ import Native.Chat (applyStyle)
 applyStyle : String -> Element -> Element
 
 -- Host where the Chat server is running
---host = "127.0.0.1:8888"
-host = "netowork.me:8888"
+host = "127.0.0.1:8888"
 
 -- Tags for identifying each message
 chatInTxt = "chatIn"
-chatOutTxt = "chatOut"
-
-netoworkHead w =
-  let
-    img = fittedImage 50 50 "http://netowork.me/resources/lambda.png"
-    t = text $ Text.height 2 $ bold $ toText "Netowork Chat"
-    bg = rgb 231 231 231
-    banner = width w $ color bg $ flow left [t,img]
-    und = color (rgb 64 167 219) $ spacer w 5
-  in
-   flow down [banner,und]
-   
+chatOutTxt = "chatOut"   
 
 -- Split a paragraph every i letters, useful to
 -- display multi-line text on fixed line boxes
@@ -60,7 +48,7 @@ display f n chatIn chatOut =
       chatBox = flow down $ snd $ foldr mkBox (True,[]) $ filter (\x -> x.deliver) chatIn
       e = asText $ log $ fromElement chatBox
   in
-  flow down [netoworkHead chatWidth,applyStyle "overflow-y:scroll" $ (container chatWidth 150 topLeft chatBox),inputs,text $ toText "Press enter to send a message."]
+  flow down [applyStyle "overflow-y:scroll" $ (container chatWidth 150 topLeft chatBox),inputs,text $ toText "Press enter to send a message."]
 
 -- Signal for the outgoing messages
 chatOut o = socketOnUntyped host chatOutTxt "NONE" o

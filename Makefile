@@ -31,8 +31,11 @@ server:
 	cd $(SAMPLES); \
 	npm install
 
+CHAT_NATIVE=$(wildcard $(SAMPLES)Chat/*.js)
+CHAT_NATIVE_INC=$(patsubst %.js,$(INC)"%.js",$(CHAT_NATIVE))
+
 chat.html: socket.js server $(SAMPLES)Chat/Chat.elm
-	DEPS=$(wildcard $(OUT)*.js);\
-	$(COMPILE_SAMPLE) $(INC)"$(OUT)SocketIO.js" $(INC)"$(SOCKET_IO)" $(SAMPLES)Chat/Chat.elm
+	DEPS=$(wildcard $(OUT)*.js); \
+	$(COMPILE_SAMPLE) $(INC)"$(OUT)SocketIO.js" $(INC)"$(SOCKET_IO)" $(CHAT_NATIVE_INC) $(SAMPLES)Chat/Chat.elm
 
 samples: chat.html

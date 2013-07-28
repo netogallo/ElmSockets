@@ -65,5 +65,9 @@ Elm.Native.SocketIO = function(elm){
 
     }
 
-    return elm.Native.SocketIO = {socketOnUntyped:F4(socketOnUntyped)};
+    return elm.Native.SocketIO = 
+	{
+	    socketOnUntyped:F4(socketOnUntyped),
+	    log : function(v){console.log(v);return v}
+	};
 };

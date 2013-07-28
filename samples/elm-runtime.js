@@ -2156,6 +2156,19 @@ Elm.Native.Graphics.Input = function(elm) {
  var JS = Elm.Native.JavaScript(elm);
  var Tuple2 = Elm.Native.Utils(elm).Tuple2;
 
+ function toElement(w,h,domNode) {
+      return A3( newElement, w, h, {
+              ctor: 'Custom',
+              type: 'DomNode',
+              render: function(node) { return node; },
+              update: function(node,oldNode,newNode) {
+                  if (node === newNode) return;
+                  node.parentNode.replaceChild(newNode, node);
+              },
+              model: domNode
+          });
+  }
+
  function dropDown(values) {
      var entries = JS.fromList(values);
      var events = Signal.constant(entries[0]._1);
@@ -2417,7 +2430,8 @@ Elm.Native.Graphics.Input = function(elm) {
      fields:mkTextPool('text'),
      emails:mkTextPool('email'),
      passwords:mkTextPool('password'),
-     dropDown:dropDown
+     dropDown:dropDown,
+     toElement:toElement
  };
 
 };
